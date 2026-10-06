@@ -1,9 +1,16 @@
-# Hibiki Player
+# Hibiki Player（Windows 桌面版）
 
-本地音乐播放器，Windows 桌面版（Electron）+ 单文件网页版：波形 · 频谱 · 声谱图 · 声场，
-Apple Music 风格界面，内置杜比 / DTS 解码，并支持从 B 站下载原始音频。
+**⬇️ 直接下载安装包：[`Hibiki Player Setup 2.15.1.exe`](https://github.com/kato-ito/hibiki-player/releases/latest/download/Hibiki.Player.Setup.2.15.1.exe)**
+（93.3 MB · Windows 10 / 11 x64 · NSIS 安装程序，双击安装即用）
 
-安卓版见 [hibiki-player-android](https://github.com/kato-ito/hibiki-player-android)。
+SHA-256 `1587E92EA9F5D4A4E8F0E00512520850B52F66013F54ACAC0F7D6CCBFB2632B7` ·
+更新说明与历史版本见 [Releases](https://github.com/kato-ito/hibiki-player/releases)
+
+本地音乐播放器（Electron 桌面版）：波形 · 频谱 · 声谱图 · 声场，Apple Music 风格界面，
+内置杜比 / DTS 解码，并支持从 B 站下载原始音频。
+
+- 单文件网页版（浏览器直接打开，无需安装）：[hibiki-player-web](https://github.com/kato-ito/hibiki-player-web)
+- 安卓版：[hibiki-player-android](https://github.com/kato-ito/hibiki-player-android)
 
 ## 功能
 
@@ -37,8 +44,8 @@ Apple Music 风格界面，内置杜比 / DTS 解码，并支持从 B 站下载�
 
 ```
 Hibiki Player/
-├── app/                     # Electron 应用源码（这里的文件才是桌面版本体）
-│   ├── index.html           #   桌面版页面（与根目录 hibiki-player.html 保持同步）
+├── app/                     # Electron 应用源码（桌面版本体）
+│   ├── index.html           #   桌面版页面（与网页版单文件同源，界面改动需手工同步）
 │   ├── main.js              #   主进程：窗口、麦克风权限、旧数据迁移
 │   ├── preload.js           #   渲染进程桥
 │   ├── bili-ipc.js          #   B 站解析 / 取流 / 下载 / ffmpeg 封装 / 扫码登录
@@ -49,7 +56,6 @@ Hibiki Player/
 │   ├── qrcode-lib.js        #   二维码生成库（MIT）
 │   ├── build/               #   应用图标
 │   └── verify-*.js / test-*.js / snap*.js   # 端到端验证与截图脚本
-├── hibiki-player.html       # 单文件网页版（浏览器直接打开）
 └── 使用说明.md              # 详细功能与版本说明
 ```
 
@@ -62,8 +68,9 @@ npm start            # 开发运行
 npm run dist         # 打包 Windows 安装包（electron-builder --win nsis，输出到 app/dist）
 ```
 
-网页版无需构建：直接用浏览器打开 `hibiki-player.html`。网页版没有桌面版专属能力（杜比 / DTS 转码、
-B 站下载、本地文件直读等）。
+**网页版（单文件）已拆分到独立仓库 [hibiki-player-web](https://github.com/kato-ito/hibiki-player-web)**：
+下载其中的 `hibiki-player.html` 用浏览器直接打开即可，无需构建。网页版没有桌面版专属能力
+（杜比 / DTS 转码、B 站下载、本地文件直读等）。
 
 ## 测试
 
@@ -84,6 +91,8 @@ npx electron app/verify-dolby.js <某个 .ac3/.eac3 文件>   # 需要 electron 
 
 - 本仓库只包含源码，不包含构建产物（`dist/`）、依赖目录（`node_modules/`）与签名密钥
 - 已打包好的 Windows 安装包见 [Releases](https://github.com/kato-ito/hibiki-player/releases/latest) 页
+  （上面第一行就是最新版安装包的直接下载链接）
+- 单文件网页版在 [hibiki-player-web](https://github.com/kato-ito/hibiki-player-web) 仓库单独维护
 - 安装包未做代码签名，运行时 Windows SmartScreen 可能提示「未知发布者」，选择「仍要运行」即可
 
 ## 许可

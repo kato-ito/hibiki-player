@@ -1,6 +1,6 @@
 # Hibiki Player - 打包说明
 
-将 `hibiki-player.html`（单文件网页应用）封装为 Electron 桌面应用并打包为 Windows 安装程序。
+把单文件网页应用（已拆分到独立仓库 [hibiki-player-web](https://github.com/kato-ito/hibiki-player-web)）封装为 Electron 桌面应用，并打包为 Windows 安装程序。
 
 ## 产物
 
@@ -345,7 +345,7 @@ npx electron-builder --win nsis
 - `verify-playlist.js` — 歌单保存链路端到端验证：新建→跨文件夹追加→保存→重启恢复→懒加载播放→缺失标注→删除（`npx electron verify-playlist.js`）
 - `verify-interactions.js` — 交互功能端到端验证：播放/暂停/继续 · 长按拖动排序（含未长按反例）· 空歌单保存说明（`npx electron verify-interactions.js`）
 - `verify-samplerate.js` — 采样率自适应端到端验证：44.1k/96k/192k/8k 逐个播放断言上下文与表头上限 · AC3 转码保留采样率 · detectRate 七种文件头单测 · probe IPC（`npx electron verify-samplerate.js`）
-- `index.html` — 桌面版页面，与根目录 `../hibiki-player.html`（网页版）内容保持一致，任一改动后需互相复制同步
+- `index.html` — 桌面版页面，与网页版单文件（[hibiki-player-web](https://github.com/kato-ito/hibiki-player-web) 的 `hibiki-player.html`）同源，界面改动需手工双向同步
 - `make-icon.js` — 纯 Node 生成应用图标（深色圆角底 + 绿色声波条），输出到 `build/icon.ico`
 - `check-syntax.js` — 提取 html 内联脚本供 `node --check` 做语法检查
 - `snap.js` — Electron 打开应用并截取各 UI 状态截图，用于界面验证（`npx electron snap.js`）
