@@ -1,0 +1,65 @@
+{
+  "name": "hibiki-player",
+  "productName": "Hibiki Player",
+  "version": "2.15.0",
+  "description": "Hibiki Player：波形 · 频谱 · 声谱图 · 声场",
+  "main": "main.js",
+  "author": "Zai",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis"
+  },
+  "devDependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
+    "electron": "^33.0.0",
+    "electron-builder": "^25.0.0"
+  },
+  "build": {
+    "appId": "com.zai.hibikiplayer",
+    "productName": "Hibiki Player",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "dolby-ipc.js",
+      "fs-ipc.js",
+      "bili-ipc.js",
+      "bili-naming.js",
+      "bili-stream.js",
+      "qrcode-lib.js",
+      "index.html"
+    ],
+    "extraResources": [
+      {
+        "from": "node_modules/@ffmpeg-installer/win32-x64/ffmpeg.exe",
+        "to": "ffmpeg.exe"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "allowElevation": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Hibiki Player"
+    }
+  },
+  "allowScripts": {
+    "electron@33.4.11": true
+  }
+}

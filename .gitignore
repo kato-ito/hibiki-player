@@ -1,0 +1,21 @@
+# 依赖与构建产物（本地生成，不入库）
+node_modules/
+app/node_modules/
+dist/
+app/dist/
+
+# 开发过程文件（含本机路径 / 截图，不入库）
+app/.extracted*.js
+app/hash-cache.js
+app/extract-pl3.js
+app/find56.js
+app/probe-wav*.js
+app/snap*.png
+*.log
+
+# 其它本地项目目录
+hibiki-rhine/
+
+# 系统文件
+Thumbs.db
+.DS_Store
