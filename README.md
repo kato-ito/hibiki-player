@@ -83,6 +83,7 @@ npx electron app/verify-dolby.js <某个 .ac3/.eac3 文件>   # 需要 electron 
 ## 说明
 
 - 本仓库只包含源码，不包含构建产物（`dist/`）、依赖目录（`node_modules/`）与签名密钥
+- 已打包好的 Windows 安装包见 [Releases](https://github.com/kato-ito/hibiki-player/releases/latest) 页
 - 安装包未做代码签名，运行时 Windows SmartScreen 可能提示「未知发布者」，选择「仍要运行」即可
 
 ## 许可
